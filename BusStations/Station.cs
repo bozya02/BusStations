@@ -6,7 +6,12 @@ namespace BusStations
     public class Station
     {
         public string Name { get; set; }
-        List<Bus> Buses { get; set; }
+        public List<Bus> Buses { get; set; }
+
+        public Station()
+        {
+            Buses = new List<Bus>();
+        }
 
         public override string ToString()
         {

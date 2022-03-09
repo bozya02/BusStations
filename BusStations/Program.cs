@@ -22,11 +22,11 @@ namespace BusStations
                         break;
 
                     case "BUSES_FOR_STOP":
-                        Console.WriteLine(depo.GetBusesForStop("Vnukovo"));
+                        Console.WriteLine(depo.GetBusesForStop(command[1]));
                             break;
 
                     case "STOPS_FOR_BUS":
-                        //Console.WriteLine(synonyms.AreSynonyms(command[1], command[2]) ? "YES" : "NO");
+                        Console.WriteLine(depo.GetStopsForBus(command[1]));
                         break;
 
                     case "ALL_BUSES":

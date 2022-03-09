@@ -6,16 +6,22 @@ namespace BusStations
     public class Bus
     {
         public string Name { get; set; }
-        public List<Station> Stations { get; set; }
+        /*public List<Station> Stations { get; set; }
 
+        public Bus()
+        {
+            Stations = new List<Bus>();
+        }
+        */
         public override string ToString()
         {
-            string result = $"Bus {Name}:";
-            foreach (var station in Stations)
-            {
-                result += $" {station.Name}";
-            }
-            return result;
+            return $"{Name}";
         }
+
+        public override bool Equals(object obj)
+        {
+            return this.Name == (obj as Bus).Name;
+        }
+
     }
 }

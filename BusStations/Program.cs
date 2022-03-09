@@ -8,14 +8,6 @@ namespace BusStations
     {
         public static void Main(string[] args)
         {
-            string route = "63: Советская площадь, Полет, Космонавтов";
-            string station = "КАИ: 63, 1, 4";
-            var Kazan = new City();
-            Kazan.AddTransport(route);
-            Kazan.AddStation(station);
-            Kazan.GetStations("63");
-            Kazan.GetBuses("Полет");
-            Kazan.GetStations("4");
             var depo = new Depo();
 
             int querryCount = int.Parse(Console.ReadLine());
@@ -26,20 +18,19 @@ namespace BusStations
                 switch (command[0].ToUpper())
                 {
                     case "NEW_BUS":
-                        //synonyms.Add(command[1], command[2]);
+                        depo.AddBus(line);
                         break;
 
                     case "BUSES_FOR_STOP":
-                        //Console.WriteLine(synonyms.GetSynonymCount(command[1]));
-                        break;
+                        Console.WriteLine(depo.GetBusesForStop("Vnukovo"));
+                            break;
 
                     case "STOPS_FOR_BUS":
                         //Console.WriteLine(synonyms.AreSynonyms(command[1], command[2]) ? "YES" : "NO");
                         break;
 
                     case "ALL_BUSES":
-                        foreach (string bus in Kazan.GetAllBuses())
-                            Console.WriteLine(bus);
+                        
                         break;
 
                     default:
@@ -47,7 +38,6 @@ namespace BusStations
                         break;
                 }
             }
-
         }
     }
 }

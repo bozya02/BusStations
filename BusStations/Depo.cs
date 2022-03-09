@@ -6,44 +6,72 @@ namespace BusStations
 {
     public class Depo
     {
-        public List<Bus> Buses { get; set; }
-        public List<Station> Stations { get; set; }
+        public Dictionary<string, HashSet<string>> Buses { get; set; }
+        public Dictionary<string, HashSet<string>> Stations { get; set; }
 
         public Depo()
         {
-            Buses = new List<Bus>();
-            Stations = new List<Station>();
+            Buses = new Dictionary<string, HashSet<string>>();
+            Stations = new Dictionary<string, HashSet<string>>();
         }
-        /*
-        public void AddTransport(string route)
+        
+        public void AddBus(string route)
         {
-            var transport = route.Split(' ')[0];
-            var bus = new Bus() { Name = transport };
-            for (int i = 0; i<int.Parse(route.Split(' ')[1]);i++)
+            //NEW_BUS 32 3 Tolstopaltsevo Marushkino Vnukovo
+            var routeParsed = route.Split(' ');
+            var bus = routeParsed[1].Trim();
+            Buses[bus] = new HashSet<string>();
+            for (int i = 0; i < int.Parse(routeParsed[2]); i++ )
             {
-                bus.Stations.Add(new Station
+                var station = routeParsed[i + 3].Trim();
+                if (!Stations.ContainsKey(station))
                 {
-                    Name = route.Split(' ')[2 + i],
-                    Buses.Add
-                });
+                    Stations[station] = new HashSet<string>();
+                }
+                Buses[bus].Add(station);
+                Stations[station].Add(bus);
+            }
+        }
+
+        public string GetBusesForStop(string stationName)
+        {
+            string result = "";
+
+            if (!Stations.ContainsKey(stationName))
+            {
+                return result + "No stop";
             }
 
-            if (!Transport.ContainsKey(transport))
+            foreach (var bus in Stations[stationName])
             {
-                Transport[transport] = new HashSet<string>();
+                result += $"{bus} ";
             }
-            foreach (var station in route.Split(':')[1].Split(','))
-            {
-                var tempStation = station.Trim();
-                Transport[transport].Add(tempStation);
-                if (!Stations.ContainsKey(tempStation))
-                {
-                    Stations[tempStation] = new HashSet<string>();
-                }
-                Stations[tempStation].Add(transport);
-            }
+
+            return result.Trim();
         }
-        */
+
+        public string GetStopsForBus(string busName)
+        {
+            string result = "";
+
+            if (!Buses.ContainsKey(busName))
+            {
+                return result + "No bus";
+            }
+
+            foreach (var station in Buses[busName])
+            {
+                result += $"Stop {station}: ";
+                foreach (var bus in Stations[station])
+                {
+                    result += $"{bus} ";
+                }
+                result.Trim();
+                result += Environment.NewLine;
+            }
+
+            return result.Trim();
+        }
     }
 
     public class City

@@ -39,7 +39,7 @@ namespace BusStations
 
             if (!Stations.ContainsKey(stationName))
             {
-                return result + "No stop";
+                return "No stop";
             }
 
             foreach (var bus in Stations[stationName])
@@ -56,7 +56,7 @@ namespace BusStations
 
             if (!Buses.ContainsKey(busName))
             {
-                return result + "No bus";
+                return "No bus";
             }
 
             foreach (var station in Buses[busName])
@@ -78,6 +78,26 @@ namespace BusStations
             }
 
             return result.Trim();
+        }
+
+        public string GetAllBuses()
+        {
+            string result = "";
+            if (Buses.Count == 0)
+                return "No buses";
+
+            foreach (var bus in Buses.Keys)
+            {
+                result += $"Bus {bus}: ";
+                foreach (var station in Buses[bus])
+                {
+                    result += $"{station} ";
+                }
+                result.Trim();
+                result += Environment.NewLine;
+            }
+            result.Trim();
+            return result;
         }
     }
 }

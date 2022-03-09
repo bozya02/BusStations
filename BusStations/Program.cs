@@ -30,7 +30,7 @@ namespace BusStations
                         break;
 
                     case "ALL_BUSES":
-                        
+                        Console.WriteLine(depo.GetAllBuses());
                         break;
 
                     default:

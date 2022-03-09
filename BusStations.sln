@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.810.17
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusStations", "BusStations\BusStations.csproj", "{4493B2C0-D936-4769-9CD7-9B61AC83E7C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusTest", "BusTest\BusTest.csproj", "{6DAAAE89-CAE6-49CE-80B3-EE384FA78560}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|anycpu = Release|anycpu
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4493B2C0-D936-4769-9CD7-9B61AC83E7C3}.Debug|anycpu.ActiveCfg = Debug|anycpu
-		{4493B2C0-D936-4769-9CD7-9B61AC83E7C3}.Debug|anycpu.Build.0 = Debug|anycpu
+		{4493B2C0-D936-4769-9CD7-9B61AC83E7C3}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{4493B2C0-D936-4769-9CD7-9B61AC83E7C3}.Debug|anycpu.Build.0 = Debug|Any CPU
 		{4493B2C0-D936-4769-9CD7-9B61AC83E7C3}.Release|anycpu.ActiveCfg = Release|anycpu
 		{4493B2C0-D936-4769-9CD7-9B61AC83E7C3}.Release|anycpu.Build.0 = Release|anycpu
+		{6DAAAE89-CAE6-49CE-80B3-EE384FA78560}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{6DAAAE89-CAE6-49CE-80B3-EE384FA78560}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{6DAAAE89-CAE6-49CE-80B3-EE384FA78560}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{6DAAAE89-CAE6-49CE-80B3-EE384FA78560}.Release|anycpu.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

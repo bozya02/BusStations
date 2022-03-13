@@ -19,12 +19,24 @@ namespace BusTest
                                                        "Stop Vnukovo: no interchange");*/
 
             depo.AddBus("NEW_BUS 32K 6 Tolstopaltsevo Marushkino Vnukovo Peredelkino Solntsevo Skolkovo");
-            /*Assert.AreEqual(depo.GetStopsForBus("32K"), "Stop Tolstopaltsevo: 32\n" +
+            Assert.AreEqual(depo.GetStopsForBus("32K"), "Stop Tolstopaltsevo: 32\n" +
                                                         "Stop Marushkino: 32\n" +
                                                         "Stop Vnukovo: 32\n" +
                                                         "Stop Peredelkino: no interchange\n" +
                                                         "Stop Solntsevo: no interchange\n" +
-                                                        "Stop Skolkovo: no interchange\n");*/
+                                                        "Stop Skolkovo: no interchange\n");
+
+        }
+
+        [TestMethod]
+        public void TestAddingStationsIncreasesTheirCount()
+        {
+            Depo depo = new Depo();
+            depo.AddBus("NEW_BUS 32 3 Tolstopaltsevo Marushkino Vnukovo");
+            Assert.AreEqual(depo.GetBusesForStop("Marushkino"), "32");
+
+            depo.AddBus("NEW_BUS 32K 6 Tolstopaltsevo Marushkino Vnukovo Peredelkino Solntsevo Skolkovo");
+            Assert.AreEqual(depo.GetBusesForStop("Marushkino"), "32, 32K");
 
         }
     }

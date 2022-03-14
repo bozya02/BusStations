@@ -76,6 +76,7 @@ namespace BusStations
                     result[iterator] += $"{bus} ";
                 }
                 result[iterator].Trim();
+                iterator++;
             }
 
             return result;
@@ -99,6 +100,7 @@ namespace BusStations
                     result[iterator] += $"{station} ";
                 }
                 result[iterator].Trim();
+                iterator++;
             }
             result.Sort();
             return result;

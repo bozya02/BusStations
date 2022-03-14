@@ -44,11 +44,27 @@ namespace BusTest
         {
             Depo depo = new Depo();
 
-
             List<string> list = new List<string>();
             list.Add("No buses");
 
             CollectionAssert.AreEquivalent(depo.GetAllBuses(), list);
+            list.Remove(list[0]);
+
+            list = new List<string>
+            {
+                "Bus 272: Vnukovo Moskovsky Rumyantsevo Troparyovo ",
+                "Bus 32: Tolstopaltsevo Marushkino Vnukovo ",
+                "Bus 32K: Tolstopaltsevo Marushkino Vnukovo Peredelkino Solntsevo Skolkovo ",
+                "Bus 950: Kokoshkino Marushkino Vnukovo Peredelkino Solntsevo Troparyovo "
+            };
+
+            depo.AddBus("NEW_BUS 32 3 Tolstopaltsevo Marushkino Vnukovo");
+            depo.AddBus("NEW_BUS 32K 6 Tolstopaltsevo Marushkino Vnukovo Peredelkino Solntsevo Skolkovo");
+            depo.AddBus("NEW_BUS 950 6 Kokoshkino Marushkino Vnukovo Peredelkino Solntsevo Troparyovo");
+            depo.AddBus("NEW_BUS 272 4 Vnukovo Moskovsky Rumyantsevo Troparyovo");
+
+            CollectionAssert.AreEquivalent(depo.GetAllBuses(), list);
+
         }
     }
 }

@@ -80,23 +80,25 @@ namespace BusStations
             return result.Trim();
         }
 
-        public string GetAllBuses()
+        public List<string> GetAllBuses()
         {
-            string result = "";
+            List<string> result = new List<string>();
             if (Buses.Count == 0)
-                return "No buses";
+            {
+                result.Add("No buses");
+                return result;
+            }
 
+            int iterator = 0;
             foreach (var bus in Buses.Keys)
             {
-                result += $"Bus {bus}: ";
+                result.Add($"Bus {bus}: ");
                 foreach (var station in Buses[bus])
                 {
-                    result += $"{station} ";
+                    result[iterator] += $"{station} ";
                 }
-                result.Trim();
-                result += Environment.NewLine;
+                result[iterator].Trim();
             }
-            result.Trim();
             return result;
         }
     }

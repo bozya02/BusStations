@@ -26,11 +26,18 @@ namespace BusStations
                             break;
 
                     case "STOPS_FOR_BUS":
-                        Console.WriteLine(depo.GetStopsForBus(command[1]));
+                        foreach (var stop in depo.GetStopsForBus(command[1]))
+                        {
+                            Console.WriteLine(stop);
+                        }
+                        Console.WriteLine();
                         break;
 
                     case "ALL_BUSES":
-                        Console.WriteLine(depo.GetAllBuses());
+                        foreach (var bus in depo.GetAllBuses())
+                        {
+                            Console.WriteLine(bus);
+                        }
                         break;
 
                     default:

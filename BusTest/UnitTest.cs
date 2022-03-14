@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BusStations;
+using System.Collections.Generic;
 
 namespace BusTest
 {
@@ -19,12 +20,12 @@ namespace BusTest
                                                        "Stop Vnukovo: no interchange");*/
 
             depo.AddBus("NEW_BUS 32K 6 Tolstopaltsevo Marushkino Vnukovo Peredelkino Solntsevo Skolkovo");
-            Assert.AreEqual(depo.GetStopsForBus("32K"), "Stop Tolstopaltsevo: 32\n" +
-                                                        "Stop Marushkino: 32\n" +
-                                                        "Stop Vnukovo: 32\n" +
-                                                        "Stop Peredelkino: no interchange\n" +
-                                                        "Stop Solntsevo: no interchange\n" +
-                                                        "Stop Skolkovo: no interchange\n");
+            Assert.AreEqual(depo.GetStopsForBus("32K"), new List<string> {"Stop Tolstopaltsevo: 32",
+                                                                          "Stop Marushkino: 32",
+                                                                          "Stop Vnukovo: 32",
+                                                                          "Stop Peredelkino: no interchange",
+                                                                          "Stop Solntsevo: no interchange",
+                                                                          "Stop Skolkovo: no interchange" });
 
         }
 

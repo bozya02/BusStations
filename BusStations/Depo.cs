@@ -50,34 +50,35 @@ namespace BusStations
             return result.Trim();
         }
 
-        public string GetStopsForBus(string busName)
+        public List<string> GetStopsForBus(string busName)
         {
-            string result = "";
+            List<string> result = new List<string>(); ;
 
             if (!Buses.ContainsKey(busName))
             {
-                return "No bus";
+                result.Add("No bus");
+                return result;
             }
 
+            int iterator = 0;
             foreach (var station in Buses[busName])
             {
-                result += $"Stop {station}: ";
+                result.Add($"Stop {station}: ");
                 foreach (var bus in Stations[station])
                 {
                     if (Stations[station].Count == 1)
                     {
-                        result += "no interchange";
+                        result[iterator] += "no interchange";
                         break;
                     }
                     if (bus == busName)
                         continue;
-                    result += $"{bus} ";
+                    result[iterator] += $"{bus} ";
                 }
-                result.Trim();
-                result += Environment.NewLine;
+                result[iterator].Trim();
             }
 
-            return result.Trim();
+            return result;
         }
 
         public List<string> GetAllBuses()
@@ -99,6 +100,7 @@ namespace BusStations
                 }
                 result[iterator].Trim();
             }
+            result.Sort();
             return result;
         }
     }

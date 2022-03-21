@@ -36,7 +36,6 @@ namespace BusStation
             {
                 throw ex;
             }
-            
         }
 
         public string GetBusesForStop(string stationName)
@@ -84,6 +83,7 @@ namespace BusStation
                 result[iterator].Trim();
                 iterator++;
             }
+
             return result;
         }
 
@@ -108,6 +108,7 @@ namespace BusStation
                 iterator++;
             }
             result.Sort();
+
             return result;
         }
     }

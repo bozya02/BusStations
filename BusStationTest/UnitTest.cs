@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BusStation;
 using System.Collections.Generic;
+using System;
 
 namespace BusStationTest
 {
@@ -65,7 +66,21 @@ namespace BusStationTest
 
             CollectionAssert.AreEquivalent(depo.GetAllBuses(), list);
 
+
         }
+
+        [TestMethod]
+        public void TestInvalidInputMethod()
+        {
+            Depo depo = new Depo();
+
+
+
+
+
+            Assert.ThrowsException<IndexOutOfRangeException>(() => depo.AddBus("NEW_BUS ugfhghkfkguhgkfhhruhgwkrhkwghrekghwkerjhgwkeg"));
+        }
+
     }
 }
 

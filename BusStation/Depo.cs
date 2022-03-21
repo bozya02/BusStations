@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BusStation
 {
@@ -16,19 +17,27 @@ namespace BusStation
         public void AddBus(string route)
         {
             //NEW_BUS 32 3 Tolstopaltsevo Marushkino Vnukovo
-            var routeParsed = route.Split(' ');
-            var bus = routeParsed[1].Trim();
-            _buses[bus] = new HashSet<string>();
-            for (int i = 0; i < int.Parse(routeParsed[2]); i++)
+            try
             {
-                var station = routeParsed[i + 3].Trim();
-                if (!_stations.ContainsKey(station))
+                var routeParsed = route.Split(' ');
+                var bus = routeParsed[1].Trim();
+                _buses[bus] = new HashSet<string>();
+                for (int i = 0; i < int.Parse(routeParsed[2]); i++)
                 {
-                    _stations[station] = new HashSet<string>();
+                    var station = routeParsed[i + 3].Trim();
+                    if (!_stations.ContainsKey(station))
+                    {
+                        _stations[station] = new HashSet<string>();
+                    }
+                    _buses[bus].Add(station);
+                    _stations[station].Add(bus);
                 }
-                _buses[bus].Add(station);
-                _stations[station].Add(bus);
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         public string GetBusesForStop(string stationName)

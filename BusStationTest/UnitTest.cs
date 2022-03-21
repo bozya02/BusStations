@@ -25,7 +25,6 @@ namespace BusStationTest
             depo.AddBus("NEW_BUS 32K 6 Tolstopaltsevo Marushkino Vnukovo Peredelkino Solntsevo Skolkovo");
 
             CollectionAssert.AreEquivalent(list, depo.GetStopsForBus("32K"));
-
         }
 
         [TestMethod]
@@ -37,7 +36,6 @@ namespace BusStationTest
 
             depo.AddBus("NEW_BUS 32K 6 Tolstopaltsevo Marushkino Vnukovo Peredelkino Solntsevo Skolkovo");
             Assert.AreEqual("32 32K", depo.GetBusesForStop("Marushkino"));
-
         }
 
         [TestMethod]
@@ -65,8 +63,6 @@ namespace BusStationTest
             depo.AddBus("NEW_BUS 272 4 Vnukovo Moskovsky Rumyantsevo Troparyovo");
 
             CollectionAssert.AreEquivalent(list, depo.GetAllBuses());
-
-
         }
 
         [TestMethod]
@@ -93,8 +89,7 @@ namespace BusStationTest
             List<String> list = new List<string> { "Bus 10A: Tolstopaltsevo " };
 
             depo.AddBus("NEW_BUS 10A 3 Tolstopaltsevo");
-            CollectionAssert.AreEquivalent(list, depo.GetAllBuses(), "Not equal");
+            CollectionAssert.AreEquivalent(list, depo.GetAllBuses());
         }
     }
 }
-

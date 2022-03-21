@@ -16,7 +16,6 @@ namespace BusStation
 
         public void AddBus(string route)
         {
-            //NEW_BUS 32 3 Tolstopaltsevo Marushkino Vnukovo
             try
             {
                 var routeParsed = route.Split(' ');
@@ -85,7 +84,6 @@ namespace BusStation
                 result[iterator].Trim();
                 iterator++;
             }
-
             return result;
         }
 

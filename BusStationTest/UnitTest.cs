@@ -86,10 +86,8 @@ namespace BusStationTest
         public void TestInverseInvalidStationCountMethod()
         {
             Depo depo = new Depo();
-            List<String> list = new List<string> { "Bus 10A: Tolstopaltsevo" };
-
-            depo.AddBus("NEW_BUS 10A 3 Tolstopaltsevo");
-            CollectionAssert.AreEquivalent(list, depo.GetAllBuses());
+            
+            Assert.ThrowsException<IndexOutOfRangeException>(() => depo.AddBus("NEW_BUS 10A 3 Tolstopaltsevo"));
         }
     }
 }

@@ -68,17 +68,17 @@ namespace BusStation
             int iterator = 0;
             foreach (var station in _buses[busName])
             {
-                result.Add($"Stop {station}: ");
+                result.Add($"Stop {station}:");
                 foreach (var bus in _stations[station])
                 {
                     if (_stations[station].Count == 1)
                     {
-                        result[iterator] += "no interchange";
+                        result[iterator] += " no interchange";
                         break;
                     }
                     if (bus == busName)
                         continue;
-                    result[iterator] += $"{bus} ";
+                    result[iterator] += $" {bus}";
                 }
                 result[iterator].Trim();
                 iterator++;
@@ -99,12 +99,13 @@ namespace BusStation
             int iterator = 0;
             foreach (var bus in _buses.Keys)
             {
-                result.Add($"Bus {bus}: ");
+                result.Add($"Bus {bus}:");
                 foreach (var station in _buses[bus])
                 {
-                    result[iterator] += $"{station} ";
+                    result[iterator] += $" {station}";
                 }
-                result[iterator].Trim();
+                
+                result[iterator].TrimEnd(' ');
                 iterator++;
             }
             result.Sort();

@@ -14,9 +14,9 @@ namespace BusStationTest
             Depo depo = new Depo();
 
             List<string> list = new List<string>();
-            list.Add("Stop Tolstopaltsevo: 32 ");
-            list.Add("Stop Marushkino: 32 ");
-            list.Add("Stop Vnukovo: 32 ");
+            list.Add("Stop Tolstopaltsevo: 32");
+            list.Add("Stop Marushkino: 32");
+            list.Add("Stop Vnukovo: 32");
             list.Add("Stop Peredelkino: no interchange");
             list.Add("Stop Solntsevo: no interchange");
             list.Add("Stop Skolkovo: no interchange");
@@ -51,10 +51,10 @@ namespace BusStationTest
 
             list = new List<string>
             {
-                "Bus 272: Vnukovo Moskovsky Rumyantsevo Troparyovo ",
-                "Bus 32: Tolstopaltsevo Marushkino Vnukovo ",
-                "Bus 32K: Tolstopaltsevo Marushkino Vnukovo Peredelkino Solntsevo Skolkovo ",
-                "Bus 950: Kokoshkino Marushkino Vnukovo Peredelkino Solntsevo Troparyovo "
+                "Bus 272: Vnukovo Moskovsky Rumyantsevo Troparyovo",
+                "Bus 32: Tolstopaltsevo Marushkino Vnukovo",
+                "Bus 32K: Tolstopaltsevo Marushkino Vnukovo Peredelkino Solntsevo Skolkovo",
+                "Bus 950: Kokoshkino Marushkino Vnukovo Peredelkino Solntsevo Troparyovo"
             };
 
             depo.AddBus("NEW_BUS 32 3 Tolstopaltsevo Marushkino Vnukovo");
@@ -76,7 +76,7 @@ namespace BusStationTest
         public void TestInvalidStationCountMethod()
         {
             Depo depo = new Depo();
-            List<String> list = new List<string> { "Bus 10A: Tolstopaltsevo Marushkino Vnukovo " };
+            List<String> list = new List<string> { "Bus 10A: Tolstopaltsevo Marushkino Vnukovo" };
 
             depo.AddBus("NEW_BUS 10A 3 Tolstopaltsevo Marushkino Vnukovo Peredelkino Solntsevo Skolkovo");
             CollectionAssert.AreEquivalent(list, depo.GetAllBuses());
@@ -86,7 +86,7 @@ namespace BusStationTest
         public void TestInverseInvalidStationCountMethod()
         {
             Depo depo = new Depo();
-            List<String> list = new List<string> { "Bus 10A: Tolstopaltsevo " };
+            List<String> list = new List<string> { "Bus 10A: Tolstopaltsevo" };
 
             depo.AddBus("NEW_BUS 10A 3 Tolstopaltsevo");
             CollectionAssert.AreEquivalent(list, depo.GetAllBuses());

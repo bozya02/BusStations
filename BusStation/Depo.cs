@@ -5,13 +5,13 @@ namespace BusStation
 {
     public class Depo
     {
-        private Dictionary<string, HashSet<string>> _buses { get; set; }
-        private Dictionary<string, HashSet<string>> _stations { get; set; }
+        private Dictionary<string, HashSet<string>> Buses { get; set; }
+        private Dictionary<string, HashSet<string>> Stops { get; set; }
 
         public Depo()
         {
-            _buses = new Dictionary<string, HashSet<string>>();
-            _stations = new Dictionary<string, HashSet<string>>();
+            Buses = new Dictionary<string, HashSet<string>>();
+            Stops = new Dictionary<string, HashSet<string>>();
         }
 
         public void AddBus(string route)
@@ -20,21 +20,21 @@ namespace BusStation
             {
                 var routeParsed = route.Split(' ');
                 var bus = routeParsed[1].Trim();
-                _buses[bus] = new HashSet<string>();
+                Buses[bus] = new HashSet<string>();
                 for (int i = 0; i < int.Parse(routeParsed[2]); i++)
                 {
                     var station = routeParsed[i + 3].Trim();
-                    if (!_stations.ContainsKey(station))
+                    if (!Stops.ContainsKey(station))
                     {
-                        _stations[station] = new HashSet<string>();
+                        Stops[station] = new HashSet<string>();
                     }
-                    _buses[bus].Add(station);
-                    _stations[station].Add(bus);
+                    Buses[bus].Add(station);
+                    Stops[station].Add(bus);
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -42,12 +42,12 @@ namespace BusStation
         {
             string result = "";
 
-            if (!_stations.ContainsKey(stationName))
+            if (!Stops.ContainsKey(stationName))
             {
                 return "No stop";
             }
 
-            foreach (var bus in _stations[stationName])
+            foreach (var bus in Stops[stationName])
             {
                 result += $"{bus} ";
             }
@@ -59,29 +59,26 @@ namespace BusStation
         {
             List<string> result = new List<string>(); ;
 
-            if (!_buses.ContainsKey(busName))
+            if (!Buses.ContainsKey(busName))
             {
                 result.Add("No bus");
                 return result;
             }
 
-            int iterator = 0;
-            foreach (var station in _buses[busName])
+            foreach (var station in Buses[busName])
             {
                 result.Add($"Stop {station}:");
-                foreach (var bus in _stations[station])
+                foreach (var bus in Stops[station])
                 {
-                    if (_stations[station].Count == 1)
+                    if (Stops[station].Count == 1)
                     {
-                        result[iterator] += " no interchange";
+                        result[^1] += " no interchange";
                         break;
                     }
                     if (bus == busName)
                         continue;
-                    result[iterator] += $" {bus}";
+                    result[^1] += $" {bus}";
                 }
-                result[iterator].Trim();
-                iterator++;
             }
 
             return result;
@@ -90,23 +87,19 @@ namespace BusStation
         public List<string> GetAllBuses()
         {
             List<string> result = new List<string>();
-            if (_buses.Count == 0)
+            if (Buses.Count == 0)
             {
                 result.Add("No buses");
                 return result;
             }
 
-            int iterator = 0;
-            foreach (var bus in _buses.Keys)
+            foreach (var bus in Buses.Keys)
             {
                 result.Add($"Bus {bus}:");
-                foreach (var station in _buses[bus])
+                foreach (var station in Buses[bus])
                 {
-                    result[iterator] += $" {station}";
+                    result[^1] += $" {station}";
                 }
-                
-                result[iterator].TrimEnd(' ');
-                iterator++;
             }
             result.Sort();
 

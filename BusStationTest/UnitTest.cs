@@ -13,13 +13,15 @@ namespace BusStationTest
         {
             Depo depo = new Depo();
 
-            List<string> list = new List<string>();
-            list.Add("Stop Tolstopaltsevo: 32");
-            list.Add("Stop Marushkino: 32");
-            list.Add("Stop Vnukovo: 32");
-            list.Add("Stop Peredelkino: no interchange");
-            list.Add("Stop Solntsevo: no interchange");
-            list.Add("Stop Skolkovo: no interchange");
+            List<string> list = new List<string>
+            {
+               "Stop Tolstopaltsevo: 32",
+               "Stop Marushkino: 32",
+               "Stop Vnukovo: 32",
+               "Stop Peredelkino: no interchange",
+               "Stop Solntsevo: no interchange",
+               "Stop Skolkovo: no interchange",
+            };
 
             depo.AddBus("NEW_BUS 32 3 Tolstopaltsevo Marushkino Vnukovo");
             depo.AddBus("NEW_BUS 32K 6 Tolstopaltsevo Marushkino Vnukovo Peredelkino Solntsevo Skolkovo");
